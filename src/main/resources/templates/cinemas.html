@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Info</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="cinema, stat : ${cinemas}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${cinema.id}">1</td>
+            <td th:text="${cinema.name}">Product 1</td>
+            <td th:text="${cinema.city}">City 1</td>
+            <td><a href="#" th:href="@{'/cinema/info/' + ${cinema.id}}">Info</a></td>
+            <td><a href="#" th:href="@{'/cinema/delete/' + ${cinema.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

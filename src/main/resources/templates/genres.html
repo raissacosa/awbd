@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="genre, stat : ${genres}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${genre.id}">1</td>
+            <td th:text="${genre.name}">Product 1</td>
+            <td><a href="#" th:href="@{'/genre/delete/' + ${genre.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div class="row">
+
+            <a class="btn btn-primary" role="button" th:href="@{'/genre/new'}">add genre</a>
+
+
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

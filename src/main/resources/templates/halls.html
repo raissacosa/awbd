@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Number</th>
+            <th>Capacity</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="hall, stat : ${halls}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${hall.id}">1</td>
+            <td th:text="${hall.number}">1</td>
+            <td th:text="${hall.capacity}">124</td>
+            <td><a href="#" th:href="@{'/hall/delete/' + ${hall.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div class="row">
+
+        <a class="btn btn-primary" role="button" th:href="@{'/hall/new'}">add hall</a>
+
+
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
