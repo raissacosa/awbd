@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Surname</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="spectator, stat : ${spectators}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${spectator.id}">1</td>
+            <td th:text="${spectator.surname}">Surname 1</td>
+            <td th:text="${spectator.name}">Actor 1</td>
+            <td th:text="${spectator.phone}">Actor 1</td>
+            <td><a href="#" th:href="@{'/spectator/delete/' + ${spectator.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div class="row">
+
+        <a class="btn btn-primary" role="button" th:href="@{'/spectator/new'}">add spectator</a>
+
+
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
