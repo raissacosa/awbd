@@ -6,32 +6,26 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <body>
-<form th:object="${hall}" th:action="@{/hall/}" method="post" enctype="multipart/form-data">
+<form th:object="${actor}" th:action="@{/actor/}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}"/>
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading" style="background-color:lightgray;">
-                <h1 class="panel-title">Product INFO</h1>
+                <h1 class="panel-title">Actor INFO</h1>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-3 form-group">
-                        <label>Hall number:</label>
-                        <input type="number" class="form-control" th:field="*{number}"/>
+                        <label>Actor surname:</label>
+                        <input type="text" class="form-control" th:field="*{surname}"/>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label>Capacity:</label>
-                        <input type="number" class="form-control" th:field="*{capacity}"/>
+                        <label>Actor name:</label>
+                        <input type="text" class="form-control" th:field="*{name}"/>
                     </div>
                 </div>
 
 
-
-                <div>
-                    <select th:field="*{cinema}" class="form-control">
-                        <option th:each="cinema: ${cinemasAll}" th:value="${cinema.id}" th:text="${cinema.name} + ' ' + ${cinema.city}"></option>
-                    </select>
-                </div>
 
                 <div class="row">
 
