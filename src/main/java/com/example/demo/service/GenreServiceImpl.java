@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Genre;
 import com.example.demo.repositories.GenreRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.Optional;
 
 @Service
 public class GenreServiceImpl implements GenreService{
+
+    private final Logger log = LoggerFactory.getLogger(GenreServiceImpl.class);
 
     GenreRepository genreRepository;
 
@@ -23,6 +27,7 @@ public class GenreServiceImpl implements GenreService{
     public List<Genre> findAll(){
         List<Genre> genres = new LinkedList<>();
         genreRepository.findAll().iterator().forEachRemaining(genres::add);
+        log.info("Find all genres", genres);
         return genres;
     }
 
@@ -32,15 +37,30 @@ public class GenreServiceImpl implements GenreService{
         if (!genreOptional.isPresent()){
             throw new RuntimeException("Genul nu a fost gasit!");
         }
-
+        log.info("Genre find by id ", genreOptional);
         return genreOptional.get();
     }
 
     @Override
     public Genre save(Genre genre){
         Genre savedGenre = genreRepository.save(genre);
+        log.info("Saved genre ... ", savedGenre);
         return savedGenre;
     }
+
+    @Override
+    public Genre update(Genre genre){
+        Optional<Genre> genreOptional = genreRepository.findById(genre.getId());
+
+        if (!genreOptional.isPresent()) {
+            throw new RuntimeException("Genre not found!");
+        }
+
+
+        Genre updatedGenre = genreRepository.save(genre);
+        return updatedGenre;
+    }
+
 
     @Override
     public void deleteById(Long id){
@@ -49,7 +69,7 @@ public class GenreServiceImpl implements GenreService{
         if (!genreOptional.isPresent()) {
             throw new RuntimeException("Genul nu a fost gasit!");
         }
-
+        log.info("Delete by id ", id);
         genreRepository.deleteById(id);
     }
 

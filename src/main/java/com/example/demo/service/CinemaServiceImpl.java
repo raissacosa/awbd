@@ -4,6 +4,8 @@ import com.example.demo.domain.Cinema;
 import com.example.demo.domain.Genre;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repositories.CinemaRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import java.util.Optional;
 
 @Service
 public class CinemaServiceImpl implements CinemaService{
+
+    private final Logger log = LoggerFactory.getLogger(CinemaServiceImpl.class);
 
     CinemaRepository cinemaRepository;
 
@@ -26,6 +30,7 @@ public class CinemaServiceImpl implements CinemaService{
     public List<Cinema> findAll(){
         List<Cinema> cinemas = new LinkedList<>();
         cinemaRepository.findAll().iterator().forEachRemaining(cinemas::add);
+        log.info("Find all cinemas", cinemas);
         return cinemas;
     }
 
@@ -35,6 +40,7 @@ public class CinemaServiceImpl implements CinemaService{
         if(!cinemaOptional.isPresent()) {
             throw new ResourceNotFoundException("cinema " + l + " not found");
         }
+        log.info("Cinema find by id ...", cinemaOptional);
         return cinemaOptional.get();
     }
 
@@ -44,7 +50,7 @@ public class CinemaServiceImpl implements CinemaService{
         if (!cinemaOptional.isPresent()) {
             throw new RuntimeException("Cinemaul nu a fost gasit!");
         }
-
+        log.info("Delete by id ", id);
         cinemaRepository.deleteById(id);
     }
 }

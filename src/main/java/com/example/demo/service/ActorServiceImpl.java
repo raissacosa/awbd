@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.domain.Actor;
 import com.example.demo.domain.Genre;
 import com.example.demo.repositories.ActorRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -11,6 +13,9 @@ import java.util.Optional;
 
 @Service
 public class ActorServiceImpl implements ActorService{
+
+    private final Logger log = LoggerFactory.getLogger(ActorServiceImpl.class);
+
 
     ActorRepository actorRepository;
 
@@ -22,12 +27,14 @@ public class ActorServiceImpl implements ActorService{
     public List<Actor> findAll(){
         List<Actor> actors = new LinkedList<>();
         actorRepository.findAll().iterator().forEachRemaining(actors::add);
+        log.info("Find all actors", actors);
         return actors;
     }
 
     @Override
     public Actor save(Actor actor){
         Actor savedActor = actorRepository.save(actor);
+        log.info("Saved actor ", savedActor);
         return savedActor;
 
     }
@@ -38,7 +45,7 @@ public class ActorServiceImpl implements ActorService{
         if (!actorOptional.isPresent()) {
             throw new RuntimeException("Actorul nu a fost gasit!");
         }
-
+        log.info("Delete by id ", id);
         actorRepository.deleteById(id);
     }
 

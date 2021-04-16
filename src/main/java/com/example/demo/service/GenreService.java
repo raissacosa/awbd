@@ -8,5 +8,6 @@ public interface GenreService {
     List<Genre> findAll();
     Genre findById(Long l);
     Genre save(Genre genre);
+    Genre update(Genre genre);
     void deleteById(Long id);
 }
