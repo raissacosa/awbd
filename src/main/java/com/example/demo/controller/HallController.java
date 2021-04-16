@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -24,6 +25,7 @@ public class HallController {
     @Autowired
     CinemaService cinemaService;
 
+    @Autowired
     public HallController(HallService hallService) {
         this.hallService = hallService;
     }
@@ -47,7 +49,10 @@ public class HallController {
     }
 
     @PostMapping("/hall")
-    public String saveOrUpdate(@ModelAttribute Hall hall){
+    public String saveOrUpdate(@Valid @ModelAttribute Hall hall, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "hallerror";
+        }
         Hall savedHall = hallService.save(hall);
         return "redirect:/hall/list";
     }

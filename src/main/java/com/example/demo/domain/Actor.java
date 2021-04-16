@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,9 @@ public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "required field")
     private String surname;
+    @NotBlank(message = "required field")
     private String name;
 
     @ManyToMany

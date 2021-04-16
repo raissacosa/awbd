@@ -16,13 +16,18 @@ public class Movie {
     private int duration;
     private int year;
 
-    @OneToOne
+    @OneToOne(mappedBy = "movie",
+            cascade = CascadeType.ALL, orphanRemoval = true)
     private Descripton descripton;
 
     @ManyToOne
     private Hall hall;
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "movie_genre",
+            joinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
     private List<Genre> genres;
 
     @ManyToMany(mappedBy = "movies")

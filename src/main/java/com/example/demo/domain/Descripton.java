@@ -1,10 +1,14 @@
 package com.example.demo.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Setter
+@Getter
 @Data
 public class Descripton {
 

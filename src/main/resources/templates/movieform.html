@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Info</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<body>
+<form th:object="${movie}" th:action="@{/movie/}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color:lightgray;">
+                <h1 class="panel-title">Movie INFO</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label>Movie name:</label>
+                        <input type="text" class="form-control" th:field="*{name}"/>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Movie duration:</label>
+                        <input type="text" class="form-control" th:field="*{duration}"/>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Movie year:</label>
+                        <input type="text" class="form-control" th:field="*{year}"/>
+                    </div>
+                </div>
+
+
+                <div class = "row">
+                    <div class="col-md-3">
+                        <label th:for="genres">Categories</label>
+                        <ul id ="genres"  style="list-style: none;">
+                            <li th:each="genre: ${genresAll}" >
+                                <input type="checkbox"
+                                       th:field="*{genres}"
+                                       th:value="${genre.id}" />
+                                <label
+                                        th:for="${#ids.prev('genres')}"
+                                        th:text="${genre.name}">
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-7 ml-md-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+</form>
+</body>
+</html>
