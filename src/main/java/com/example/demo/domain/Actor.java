@@ -23,4 +23,8 @@ public class Actor {
             joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
     private List<Movie> movies;
+
+    public String getName() {
+        return name;
+    }
 }

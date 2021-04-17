@@ -24,4 +24,12 @@ public class Cinema {
     @OneToMany(mappedBy = "cinema")
     //@ToString.Exclude
     private List<Hall> halls;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
 }

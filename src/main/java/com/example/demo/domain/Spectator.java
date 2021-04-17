@@ -26,4 +26,9 @@ public class Spectator {
             joinColumns = @JoinColumn(name = "spectator_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
     private List<Movie> movies;
+
+
+    public String getSurname() {
+        return surname;
+    }
 }

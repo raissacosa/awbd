@@ -45,6 +45,16 @@ public class GenreController {
         return "genreform";
     }
 
+    @RequestMapping("/genre/update")
+    public String updateGenre(Model model) {
+      //  model.addAttribute("genre", new Genre());
+      //  List<Genre> genresAll = genreService.findAll();
+
+       // model.addAttribute("genresAll", genresAll);
+        //genreService.update(model);
+        return "genreform";
+    }
+
     @PostMapping("/genre")
     public String saveOrUpdate(@Valid @ModelAttribute Genre genre, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
