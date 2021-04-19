@@ -31,4 +31,16 @@ public class Hall {
 
     @OneToMany(mappedBy = "hall")
     private List<Movie> movies;
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
 }

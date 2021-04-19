@@ -32,4 +32,24 @@ public class Cinema {
     public String getCity() {
         return city;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setConstructionyear(int constructionyear) {
+        this.constructionyear = constructionyear;
+    }
+
+    public void setHalls(List<Hall> halls) {
+        this.halls = halls;
+    }
 }

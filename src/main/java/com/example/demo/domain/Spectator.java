@@ -31,4 +31,16 @@ public class Spectator {
     public String getSurname() {
         return surname;
     }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
