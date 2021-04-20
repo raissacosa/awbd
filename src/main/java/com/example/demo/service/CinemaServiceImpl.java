@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -52,5 +53,10 @@ public class CinemaServiceImpl implements CinemaService{
         }
         log.info("Delete by id ", id);
         cinemaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Cinema> findByCinemaNameAndCity(String cinemaName,String cinemaCity){
+        return cinemaRepository.findByCinemaNameAndCity(cinemaName,cinemaCity);
     }
 }

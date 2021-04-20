@@ -11,5 +11,5 @@ public interface ActorService {
     List<Actor> findAll();
     Actor save(Actor actor);
     void deleteById(Long id);
-
+    List<Actor> findBySurname(String surname);
 }

@@ -5,8 +5,13 @@ import com.example.demo.repositories.GenreRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -71,6 +76,35 @@ public class GenreServiceImpl implements GenreService{
         }
         log.info("Delete by id ", id);
         genreRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Genre> findPaginated(int pageNo, int pageSize){
+
+        Pageable pageable = PageRequest.of(pageNo-1,pageSize);
+
+        return genreRepository.findAll(pageable);
+
+
+        /*
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<Genre> list;
+
+        List<Genre> genres = new LinkedList<>();
+        genreRepository.findAll().iterator().forEachRemaining(genres::add);
+        if (genres.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, genres.size());
+            list = genres.subList(startItem, toIndex);
+        }
+
+        Page<Genre> genrePage = new PageImpl<Genre>(list, PageRequest.of(currentPage,pageSize), genres.size());
+
+        return genrePage;*/
+
     }
 
     /*

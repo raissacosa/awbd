@@ -49,5 +49,13 @@ public class ActorServiceImpl implements ActorService{
         actorRepository.deleteById(id);
     }
 
+    @Override
+    public List<Actor> findBySurname(String surname){
+        List<Actor> actors = new LinkedList<>();
+        actorRepository.findBySurame(surname).iterator().forEachRemaining(actors::add);
+        log.info("Find actors with given last name", actors);
+        return actors;
+    }
+
 
 }

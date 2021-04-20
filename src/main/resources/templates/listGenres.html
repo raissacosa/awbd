@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="genre, stat : ${listGenres}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${genre.id}">1</td>
+            <td th:text="${genre.name}">Product 1</td>
+            <td><a href="#" th:href="@{'/genre/delete/' + ${genre.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div class="row">
+
+        <a class="btn btn-primary" role="button" th:href="@{'/genre/new'}">add genre</a>
+
+
+
+
+    </div>
+</div>
+
+<div th:if = "${totalPages > 1}">
+    <div class = "row col-sm-10">
+        <div class = "col-sm-2">
+            Total Rows: [[${totalItems}]]
+        </div>
+        <div class = "col-sm-1">
+					<span th:each="i:${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i} }">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+        </div>
+        <div class = "col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+            <span th:unless="${currentPage < totalPages}">Next</span>
+        </div>
+
+        <div class="col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+            <span th:unless="${currentPage < totalPages}">Last</span>
+        </div>
+    </div>
+
+
+</body>
+</html>
