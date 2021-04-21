@@ -15,6 +15,6 @@ public interface CinemaService {
     List<Cinema> findAll();
     Cinema findById(Long l);
     void deleteById(Long id);
-
+    void save(Cinema cinema);
     List<Cinema> findByCinemaNameAndCity(String cinemaName,String cinemaCity);
 }

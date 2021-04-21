@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Actor;
 import com.example.demo.domain.Genre;
+import com.example.demo.domain.Spectator;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repositories.ActorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,16 @@ public class ActorServiceImpl implements ActorService{
         actorRepository.findAll().iterator().forEachRemaining(actors::add);
         log.info("Find all actors", actors);
         return actors;
+    }
+
+    @Override
+    public Actor findById(Long l){
+        Optional<Actor> actorOptional = actorRepository.findById(l);
+        if(!actorOptional.isPresent()) {
+            throw new ResourceNotFoundException("actor " + l + " not found");
+        }
+        log.info("actor find by id ...", actorOptional);
+        return actorOptional.get();
     }
 
     @Override

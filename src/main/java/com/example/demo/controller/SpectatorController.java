@@ -1,17 +1,16 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.domain.Cinema;
 import com.example.demo.domain.Genre;
+import com.example.demo.domain.Hall;
 import com.example.demo.domain.Spectator;
 import com.example.demo.service.SpectatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -44,6 +43,18 @@ public class SpectatorController {
         model.addAttribute("spectatorsAll", spectatorsAll);
 
         return "spectatorform";
+    }
+
+    @GetMapping("spectator/update/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model){
+
+        Spectator spectator = spectatorService.findById(id);
+
+        model.addAttribute("spectator", spectator);
+
+        return "update-spectator";
+
+
     }
 
     @PostMapping("/spectator")

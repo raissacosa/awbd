@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Genre;
+import com.example.demo.domain.Hall;
 import com.example.demo.domain.Spectator;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repositories.SpectatorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,16 @@ public class SpectatorServiceImpl implements SpectatorService{
         spectatorRepository.findAll().iterator().forEachRemaining(spectators::add);
         log.info("Find all spectators", spectators);
         return spectators;
+    }
+
+    @Override
+    public Spectator findById(Long l){
+        Optional<Spectator> spectatorOptional = spectatorRepository.findById(l);
+        if(!spectatorOptional.isPresent()) {
+            throw new ResourceNotFoundException("spectator " + l + " not found");
+        }
+        log.info("Spectator find by id ...", spectatorOptional);
+        return spectatorOptional.get();
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ActorService {
     List<Actor> findAll();
+    Actor findById(Long l);
     Actor save(Actor actor);
     void deleteById(Long id);
     List<Actor> findBySurname(String surname);

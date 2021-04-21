@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Cinema;
 import com.example.demo.domain.Hall;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repositories.HallRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,15 @@ public class HallServiceImpl implements HallService{
         return halls;
     }
 
+    @Override
+    public Hall findById(Long l){
+        Optional<Hall> hallOptional = hallRepository.findById(l);
+        if(!hallOptional.isPresent()) {
+            throw new ResourceNotFoundException("hall " + l + " not found");
+        }
+        log.info("Hall find by id ...", hallOptional);
+        return hallOptional.get();
+    }
 
 
     @Override

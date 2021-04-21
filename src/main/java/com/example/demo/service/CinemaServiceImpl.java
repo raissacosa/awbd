@@ -59,4 +59,9 @@ public class CinemaServiceImpl implements CinemaService{
     public List<Cinema> findByCinemaNameAndCity(String cinemaName,String cinemaCity){
         return cinemaRepository.findByCinemaNameAndCity(cinemaName,cinemaCity);
     }
+
+    @Override
+    public void save(Cinema cinema){
+        cinemaRepository.save(cinema);
+    }
 }

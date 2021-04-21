@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Actor;
 import com.example.demo.domain.Genre;
+import com.example.demo.domain.Spectator;
 import com.example.demo.service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,19 @@ public class ActorController {
 
         return "actorform";
     }
+
+    @GetMapping("actor/update/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model){
+
+        Actor actor = actorService.findById(id);
+
+        model.addAttribute("actor", actor);
+
+        return "update-actor";
+
+
+    }
+
 
     @PostMapping("/actor")
     public String saveOrUpdate(@Valid @ModelAttribute Actor actor, BindingResult bindingResult){

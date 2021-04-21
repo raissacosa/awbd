@@ -26,6 +26,7 @@
             <th>Name</th>
             <th>City</th>
             <th>Info</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -36,6 +37,7 @@
             <td th:text="${cinema.name}">Product 1</td>
             <td th:text="${cinema.city}">City 1</td>
             <td><a href="#" th:href="@{'/cinema/info/' + ${cinema.id}}">Info</a></td>
+            <td><a href="#" th:href="@{'/cinema/update/' + ${cinema.id}}">Update</a></td>
             <td><a href="#" th:href="@{'/cinema/delete/' + ${cinema.id}}">Delete</a></td>
         </tr>
     </table>

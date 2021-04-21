@@ -48,6 +48,22 @@ public class HallController {
         return "hallform";
     }
 
+    //update
+    @GetMapping("hall/update/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model){
+
+        Hall hall = hallService.findById(id);
+        List<Cinema> cinemasAll = cinemaService.findAll();
+
+        model.addAttribute("hall", hall);
+        model.addAttribute("cinemasAll",cinemasAll);
+
+        return "update-hall";
+
+
+    }
+
+
     @PostMapping("/hall")
     public String saveOrUpdate(@Valid @ModelAttribute Hall hall, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
