@@ -9,8 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>actor </h1>
-    <hr>
+
     <h2>Update actor</h2>
 
     <form action="#" th:action="@{/actor}" th:object="${actor}"
@@ -19,12 +18,17 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
 
+
+        <label class="lead">Last name:</label>
         <input type="text" th:field="*{surname}" class="form-control mb-4 col-4">
 
+
+        <label class="lead">First name:</label>
         <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
 
+        <br>
 
-        <button type="submit" class="btn btn-info col-2"> Update Cinema</button>
+        <button type="submit" class="btn btn-info col-2"> Update actor</button>
     </form>
 
     <hr>

@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Spectator</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-
+<br>
 <div class="container">
 
     <table class="table table-hover ">
         <thead class="thead-inverse">
         <tr>
             <th>ID</th>
-            <th>Surname</th>
-            <th>Name</th>
+            <th>Lastname</th>
+            <th>Firstname</th>
             <th>Phone</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -25,14 +28,17 @@
             <td th:text="${spectator.surname}">Surname 1</td>
             <td th:text="${spectator.name}">Actor 1</td>
             <td th:text="${spectator.phone}">Actor 1</td>
+            <td><a href="#" th:href="@{'/spectator/update/' + ${spectator.id}}">Update</a></td>
             <td><a href="#" th:href="@{'/spectator/delete/' + ${spectator.id}}">Delete</a></td>
         </tr>
     </table>
 </div>
+<br>
+<hr>
 <div class="container">
     <div class="row">
 
-        <a class="btn btn-primary" role="button" th:href="@{'/spectator/new'}">add spectator</a>
+        <a class="btn btn-primary" role="button" th:href="@{'/spectator/new'}">Add spectator</a>
 
 
 

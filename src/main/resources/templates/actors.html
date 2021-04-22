@@ -2,25 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Actor</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-
-<div>
+<br>
+<div class="container">
+    <div class="row">
     <form th:action="@{/actor/findByLastName}">
         <input type="text" name = "surname"/>
-        <input type="submit" value="search">
+        <input  type="submit" value="search">
     </form>
+    </div>
 </div>
-
+<br>
 <div class="container">
 
     <table class="table table-hover ">
         <thead class="thead-inverse">
         <tr>
             <th>ID</th>
-            <th>Surname</th>
-            <th>Name</th>
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -30,14 +35,17 @@
             <td th:text="${actor.id}">1</td>
             <td th:text="${actor.surname}">Surname 1</td>
             <td th:text="${actor.name}">Actor 1</td>
+            <td><a href="#" th:href="@{'/actor/update/' + ${actor.id}}">Update</a></td>
             <td><a href="#" th:href="@{'/actor/delete/' + ${actor.id}}">Delete</a></td>
         </tr>
     </table>
 </div>
+<br>
+<hr>
 <div class="container">
     <div class="row">
 
-        <a class="btn btn-primary" role="button" th:href="@{'/actor/new'}">add genre</a>
+        <a class="btn btn-primary" role="button" th:href="@{'/actor/new'}">Add actor</a>
 
 
 

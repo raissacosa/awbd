@@ -2,25 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Info</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <title>Hall</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
 <body>
+<br>
+<br>
 <form th:object="${hall}" th:action="@{/hall/}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}"/>
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color:lightgray;">
-                <h1 class="panel-title">Product INFO</h1>
+            <div class="panel-heading" style="background-color:#f0f5f3;">
+                <h1 class="panel-title" >Hall info</h1>
             </div>
+            <hr>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-3 form-group">
-                        <label>Hall number:</label>
+                        <label class="lead">Hall number:</label>
                         <input type="number" class="form-control" th:field="*{number}"/>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label>Capacity:</label>
+                        <label class="lead">Capacity:</label>
                         <input type="number" class="form-control" th:field="*{capacity}"/>
                     </div>
                 </div>
@@ -28,11 +34,13 @@
 
 
                 <div>
+                    <label class="lead">Cinema:</label>
                     <select th:field="*{cinema}" class="form-control">
                         <option th:each="cinema: ${cinemasAll}" th:value="${cinema.id}" th:text="${cinema.name} + ' ' + ${cinema.city}"></option>
                     </select>
                 </div>
 
+                <br>
                 <div class="row">
 
                     <div class="col-md-7 ml-md-auto">

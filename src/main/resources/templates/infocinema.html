@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Cinema Info</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
 <body>
 <div class="container" style="margin-top: 50px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="pannel-group">
                 <div class="panel panel-primary">
-                    <div class="panel-heading" style="background-color:lightgray;">
-                        <h1 class="panel-title" th:text="${cinema.name}">Product</h1>
+                    <div class="panel-heading" style="background-color:#f0f5f3;">
+                        <h1 class="panel-title" th:text="${cinema.name}">Cinema</h1>
                     </div>
                     <div class="panel-body">
 
@@ -20,25 +23,19 @@
 
 
                         <div class="row">
-                            <div class="col-md-2">
-                                <p>City:</p>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                                <p class="lead">City:</p>
                                 <p th:text="${cinema.city != null ?(cinema.city):'city'}">city</p>
                             </div>
-                            <div class="col-md-3">
-                                <p5>Address:</p5>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                                <p class="lead">Address:</p>
                                 <p th:text="${cinema.address != null ? cinema.address:' '}">
                                     address
                                 </p>
                             </div>
 
-                            <div class="col-md-3">
-                                <p5>Construction year:</p5>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                                <p class="lead">Construction year:</p>
                                 <p th:text="${cinema.constructionyear != null ? cinema.constructionyear:' '}">
                                     contructionyear
                                 </p>

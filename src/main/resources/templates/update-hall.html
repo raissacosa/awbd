@@ -9,8 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Hall </h1>
-    <hr>
+    <br>
     <h2>Update hall</h2>
 
     <form action="#" th:action="@{/hall}" th:object="${hall}"
@@ -19,15 +18,20 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
 
+        <label class="lead">Hall number:</label>
         <input type="number" th:field="*{number}" class="form-control mb-4 col-4">
 
+        <label class="lead">Capacity:</label>
         <input type="number" th:field="*{capacity}" class="form-control mb-4 col-4">
 
         <div>
+            <label class="lead">Cinema:</label>
             <select th:field="*{cinema}" class="form-control">
                 <option th:each="cinema: ${cinemasAll}" th:value="${cinema.id}" th:text="${cinema.name} + ' ' + ${cinema.city}"></option>
             </select>
         </div>
+
+        <br>
 
         <button type="submit" class="btn btn-info col-2"> Update Cinema</button>
     </form>

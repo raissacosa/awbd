@@ -2,18 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cinema</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
+
 <body>
 
-<div>
+<br>
+
+<br>
+<div class="container">
+    <div class="row">
     <form th:action="@{/cinema/findByNameAndCity}">
         <input type="text" name = "cinemaName"/>
         <input type="text" name="cinemaCity"/>
         <input type="submit" value="search">
     </form>
-</div>
+        <div style="margin-right: 30px!important;" class="col-md-3 ">
+            <form th:action="@{/logout}" method="POST"> <input type="submit" class="btn btn-primary " value="Logout"> </form>
+        </div>
+    </div>
 
+
+</div>
+<br>
 <div class="container">
     Logged user:
     <span sec:authentication="name">user</span>
@@ -43,9 +56,7 @@
     </table>
 </div>
 
-<div class="col-md-3">
-    <form th:action="@{/logout}" method="POST"> <input type="submit" class="btn btn-primary" value="Logout"> </form>
-</div>
+
 
 </body>
 </html>

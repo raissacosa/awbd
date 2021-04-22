@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> Genre</title>
+    <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
 <body>
 
@@ -13,14 +16,15 @@
 <input type="hidden" th:field="*{id}"/>
 <div class="pannel-group">
 <div class="panel panel-primary">
-    <div class="panel-heading">
-    <h1 class="panel-title">ADD GENRE</h1>
+    <div class="panel-heading" style="background-color:#f0f5f3;">
+    <h1 class="panel-title">Add genre</h1>
     </div>
+    <hr>
 <div class="panel-body">
 <div class="row">
 <div class="col-md-3 form-group">
-<label>genre name:</label>
-<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</label>
+<label class="lead">Name:</label>
+<label style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</label>
 <input type="text" class="form-control" th:field="*{name}"/>
 </div>
 </div>

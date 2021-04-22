@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cinema</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body>
 
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/cinema/findByNameAndCity}">
+            <input type="text" name = "cinemaName"/>
+            <input type="text" name="cinemaCity"/>
+            <input type="submit" value="search">
+        </form>
+        <div style="margin-right: 30px!important;" class="col-md-3 ">
+            <form th:action="@{/logout}" method="POST"> <input type="submit" class="btn btn-primary " value="Logout"> </form>
+        </div>
+    </div>
+
+
+</div>
+<br>
 
 <div class="container">
     Logged user:
@@ -19,6 +38,7 @@
             <th>Name</th>
             <th>City</th>
             <th>Info</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -29,14 +49,13 @@
             <td th:text="${cinema.name}">Product 1</td>
             <td th:text="${cinema.city}">City 1</td>
             <td><a href="#" th:href="@{'/cinema/info/' + ${cinema.id}}">Info</a></td>
+            <td><a href="#" th:href="@{'/cinema/update/' + ${cinema.id}}">Update</a></td>
             <td><a href="#" th:href="@{'/cinema/delete/' + ${cinema.id}}">Delete</a></td>
         </tr>
     </table>
 </div>
 
-<div class="col-md-3">
-    <form th:action="@{/logout}" method="POST"> <input type="submit" class="btn btn-primary" value="Logout"> </form>
-</div>
+
 
 </body>
 </html>

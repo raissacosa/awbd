@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body>
 
+<body>
+<br>
+<br>
 <div class="container">
 
     <table class="table table-hover ">
@@ -14,6 +18,7 @@
             <th>ID</th>
             <th>Number</th>
             <th>Capacity</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -23,6 +28,7 @@
             <td th:text="${hall.id}">1</td>
             <td th:text="${hall.number}">1</td>
             <td th:text="${hall.capacity}">124</td>
+            <td><a href="#" th:href="@{'/hall/update/' + ${hall.id}}">Update</a></td>
             <td><a href="#" th:href="@{'/hall/delete/' + ${hall.id}}">Delete</a></td>
         </tr>
     </table>
@@ -30,7 +36,7 @@
 <div class="container">
     <div class="row">
 
-        <a class="btn btn-primary" role="button" th:href="@{'/hall/new'}">add hall</a>
+        <a class="btn btn-primary" role="button" th:href="@{'/hall/new'}">Add hall</a>
 
 
 
