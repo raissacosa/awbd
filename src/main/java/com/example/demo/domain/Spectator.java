@@ -21,10 +21,8 @@ public class Spectator {
     @Size(min = 10, max = 10, message = "The phone number must have 10 digits")
     private String phone;
 
-    @ManyToMany
-    @JoinTable(name = "movie_spectator",
-            joinColumns = @JoinColumn(name = "spectator_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "spectators",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Movie> movies;
 
 

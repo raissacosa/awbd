@@ -18,10 +18,8 @@ public class Actor {
     @NotBlank(message = "required field")
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "movie_actor",
-            joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "actors",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Movie> movies;
 
     public String getName() {

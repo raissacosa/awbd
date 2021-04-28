@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/movie/findByName}">
+            <input type="text" name = "movieName"/>
+            <input type="submit" value="search">
+        </form>
+
+    </div>
+
+
+</div>
+<br>
+<br>
+<div class="container">
+
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Year</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tr th:each="movie, stat : ${listMovies}"
+            th:class="${stat.odd}? 'table-light':'table-dark'"
+        >
+            <td th:text="${movie.id}">1</td>
+            <td th:text="${movie.name}">Product 1</td>
+            <td th:text="${movie.duration}">Product 1</td>
+            <td th:text="${movie.year}">Product 1</td>
+            <td><a href="#" th:href="@{'/movie/delete/' + ${movie.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+
+        <a class="btn btn-primary" role="button" th:href="@{'/movie/new'}">Add movie</a>
+
+
+
+
+    </div>
+</div>
+<br>
+<hr>
+
+<div class="container" th:if = "${totalPages > 1}">
+    <div class = "row ">
+        <p> Total Rows: [[${totalItems}]] </p>
+    </div>
+    <div class = "row col-sm-10">
+
+        <div class = "col-sm-1">
+					<span th:each="i:${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/pages/' + ${i} }">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+        </div>
+        <div class = "col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/pages/' + ${currentPage + 1}}">Next</a>
+            <span th:unless="${currentPage < totalPages}">Next</span>
+        </div>
+
+        <div class="col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/pages/' + ${totalPages}}">Last</a>
+            <span th:unless="${currentPage < totalPages}">Last</span>
+        </div>
+    </div>
+
+
+</body>
+</html>
